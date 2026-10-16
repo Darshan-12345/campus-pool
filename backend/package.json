@@ -1,0 +1,53 @@
+{
+  "name": "campus-pool-backend",
+  "version": "1.0.0",
+  "description": "Backend REST API for Campus Pool (Neon PostgreSQL + Express.js + Prisma)",
+  "main": "src/server.js",
+  "scripts": {
+    "build": "prisma generate",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test:geocoding": "node --test test/geocoding.test.js",
+    "test:routing": "node --test test/routing.test.js",
+    "test:pricing": "node --test test/ridePricing.test.js",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio",
+    "seed:routes": "node scripts/seed-routes.js",
+    "cleanup:four-wheelers": "node scripts/remove-four-wheelers.js",
+    "recalculate:fares": "node scripts/recalculate-fares.js",
+    "generate:synthetic": "node scripts/generate-synthetic-data.js",
+    "import:synthetic": "node scripts/import-synthetic-data.js",
+    "export:reviews:sentiment": "node scripts/export-reviews-for-sentiment.js",
+    "train:ncf": "python ml/train_ncf.py",
+    "train:sentiment": "python ml/train_sentiment.py",
+    "serve:sentiment": "python -m uvicorn sentiment_service:app --app-dir ml --host 127.0.0.1 --port 8001",
+    "db:test": "node test_db.js"
+  },
+  "keywords": [
+    "campus-pool",
+    "rideshare",
+    "express",
+    "nodejs",
+    "postgresql",
+    "neon",
+    "prisma"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.3.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "prisma": "^6.3.1"
+  }
+}
